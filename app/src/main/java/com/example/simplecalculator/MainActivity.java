@@ -8,17 +8,68 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
+    EditText num1,num2;
+    Button add,subtract,division,multiply;
+    TextView result;
+    int r,f,g;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        num1=(EditText)findViewById(R.id.editText);
+        num2=(EditText)findViewById(R.id.editText2);
+        add=(Button)findViewById(R.id.button_add);
+        subtract=(Button)findViewById(R.id.button_subtract);
+        multiply=(Button)findViewById(R.id.button_multiply);
+        division=(Button)findViewById(R.id.button_division);
+        result=(TextView)findViewById(R.id.textView);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                r=Integer.parseInt(num1.getText().toString());
+                f=Integer.parseInt(num2.getText().toString());
+                g=r+f;
+                result.setText("Results="+g);
+            }
+
+        });
+
+        subtract.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                r=Integer.parseInt(num1.getText().toString());
+                f=Integer.parseInt(num2.getText().toString());
+                g=r-f;
+                result.setText("Results="+g);
+            }
+
+        });
+
+        multiply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                f=Integer.parseInt(num2.getText().toString());
+                g=r*f;
+                result.setText("Results="+g);
+            }
+        });
+
+        division.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                f=Integer.parseInt(num2.getText().toString());
+                g=r/f;
+                result.setText("Results="+g);
+            }
+        });
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -28,15 +79,8 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-    }
-    public void onButtonClick(View view){
-        EditText e1=(EditText) findViewById(R.id.editText1);
-        EditText e2=(EditText) findViewById(R.id.editText2);
-        TextView t1=(TextView)findViewById(R.id.TextView);
-        int num1=Integer.parseInt(e1.getText().toString());
-        int num2=Integer.parseInt(e2.getText().toString());
-        int sum= num1+num2;
-        t1.setText(Integer.toString(sum));
+
+
     }
 
     @Override
